@@ -13,13 +13,13 @@ class CategoryDetailViewController: UIViewController {
 
     @IBOutlet weak var listItemsTableView: UITableView!
     var categoryName: String = ""
-    private var listItems = BehaviorRelay<[Drink]>(value: [])
+    var listItems = BehaviorRelay<[Drink]>(value: [])
     private let disposeBag = DisposeBag()
     override func viewDidLoad() {
         super.viewDidLoad()
         configureUI()
         bindingListItemsTableView()
-        fetchData()
+//        fetchData()
     }
     
     private func configureUI() {
@@ -41,13 +41,13 @@ class CategoryDetailViewController: UIViewController {
             }).disposed(by: disposeBag)
     }
     
-    private func fetchData() {
-        NetWorking
-            .share()
-            .getDrinks(kind: "c", value: categoryName)
-            .bind(to: listItems)
-            .disposed(by: disposeBag)
-    }
+//    private func fetchData() {
+//        NetWorking
+//            .share()
+//            .getDrinks(kind: "c", value: categoryName)
+//            .bind(to: listItems)
+//            .disposed(by: disposeBag)
+//    }
 }
 
 extension CategoryDetailViewController: UITableViewDelegate, UITableViewDataSource {

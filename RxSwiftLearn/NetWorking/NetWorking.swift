@@ -92,9 +92,8 @@ final class NetWorking {
         let query: [String: Any] = [kind: "list"]
         let url = EndPoint.categories.url
         
-        let result: Observable<CategoryResult<CocktailCategory>> = request(url: url, query: query)
+        let result: Observable<[CocktailCategory]> = request(url: url, query: query, contentKey: "drinks")
         return result
-            .map{ $0.items }
             .catchAndReturn([])
             .share(replay: 1, scope: .forever)
     }

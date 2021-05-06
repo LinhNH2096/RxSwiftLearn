@@ -7,8 +7,8 @@
 
 import Foundation
 
-// Generic Category Result
-struct CategoryResult<T: Codable>: Codable {
+// Generic Result
+struct Result<T: Codable>: Codable {
     var items: [T]
     
     enum CodingKeys: String, CodingKey {
@@ -19,10 +19,21 @@ struct CategoryResult<T: Codable>: Codable {
 // Cocktail Category
 struct CocktailCategory: Codable {
     var nameCategory: String
-    var items = [Drink]()
+    var items: [Drink] = []
     
     enum CodingKeys: String, CodingKey {
         case nameCategory = "strCategory"
+    }
+}
+
+// Cache Category
+struct TempCategory<T: Codable>: Codable {
+    var nameCategory: String
+    var items: [T]
+    
+    enum CodingKeys: String, CodingKey {
+        case nameCategory = "strCategory"
+        case items = "items"
     }
 }
 
