@@ -71,7 +71,6 @@ final class NetWorking {
             return URLSession.shared.rx
                 .response(request: request)
                 .map { (response, data) -> T in
-                    
                     if contentKey != "" {
                         let decoder = NetWorking.jsonDecode(contentKey: contentKey)
                         let envelope = try decoder.decode(NetworkingResult<T>.self, from: data)
@@ -107,6 +106,4 @@ final class NetWorking {
             .catchAndReturn([])
             .share(replay: 1, scope: .forever)
     }
-    
-    
 }
